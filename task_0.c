@@ -1,19 +1,13 @@
 #include <stdio.h>
+#include <unistd.h>
 
-#define MY_CONSTANT 42
-
- /** 
- *main - The program that print
- *Return: Always 0
+/**
+ * main - Entry
+ * Return: Always 0
  */
 
 int main(void)
 {
-    int my_variable = 0;
-
-    if (my_variable == 0) {
-        printf("my_variable is zero\n");
-    }
-
-    return 0;
+	write(STDOUT_FILENO, "THE GATES OF SHELL\n", 19);
+	return (0);
 }
