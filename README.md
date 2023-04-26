@@ -1,42 +1,38 @@
-0x16. C - Simple Shell
-C
-Group project
-Syscall
+**SIMPLE SHELL PROJECT**
+
+*Concepts*
+
+For this project, we expect you to look at these concepts:
+
+#Everything you need to know to start coding your own shell
+#Approaching a Project
 
 
-Resources
-Read or watch:
+_Background Context_
 
-Unix shell
-Thompson shell
-Ken Thompson
-Everything you need to know to start coding your own shell concept page
-man or help:
+//Write a simple UNIX command interpreter.//
 
-sh (Run sh as well)
 Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
-General
-Who designed and implemented the original Unix operating system
-Who wrote the first version of the UNIX shell
-Who invented the B programming language (the direct predecessor to the C programming language)
-Who is Ken Thompson
-How does a shell work
-What is a pid and a ppid
-How to manipulate the environment of the current process
-What is the difference between a function and a system call
-How to create processes
-What are the three prototypes of main
-How does the shell use the PATH to find the programs
-How to execute another program with the execve system call
-How to suspend the execution of a process until one of its children terminates
-What is EOF / “end-of-file”?
-Copyright - Plagiarism
-You are tasked to come up with solutions for the tasks below yourself to meet with the above learning objectives.
-You will not be able to meet the objectives of this or any following project by copying and pasting someone else’s work.
-You are not allowed to publish any content of this project.
-Any form of plagiarism is strictly forbidden and will result in removal from the program.
+**General**
+
+#Who designed and implemented the original Unix operating system
+#Who wrote the first version of the UNIX shell
+#Who invented the B programming language (the direct predecessor to the C programming language)
+#Who is Ken Thompson
+#How does a shell work
+#What is a pid and a ppid
+#How to manipulate the environment of the current process
+#What is the difference between a function and a system call
+#How to create processes
+#What are the three prototypes of main
+#How does the shell use the PATH to find the programs
+#How to execute another program with the execve system call
+#How to suspend the execution of a process until one of its children terminates
+#What is EOF / “end-of-file"
+
+
 Requirements
 General
 Allowed editors: vi, vim, emacs
@@ -50,20 +46,65 @@ All your header files should be include guarded
 Use system calls only when you need to (why?)
 Write a README with the description of your project
 You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. Format, see Docker
+
 GitHub
 *There should be one project repository per group. If you and your partner have a repository with the same name in both your accounts, you risk a 0% score. Add your partner as a collaborator. *
 
 More Info
 Output
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-The only difference is when you print an error, the name of the program must be equivalent to your argv[0]
-Simple Shell Project
+The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
+Example of error with sh:
 
-About
+$ echo "qwerty" | /bin/sh
+/bin/sh: 1: qwerty: not found
+$ echo "qwerty" | /bin/../bin/sh
+/bin/../bin/sh: 1: qwerty: not found
+$
+Same error with your program hsh:
 
-The shell is the Linux command line interpreter. It provides an interface between the user and the kernel and executes programs called commands. For example, if a user enters ls then the shell executes the ls command.
+$ echo "qwerty" | ./hsh
+./hsh: 1: qwerty: not found
+$ echo "qwerty" | ./././hsh
+./././hsh: 1: qwerty: not found
+$
 
-This project, simple_shell, is a custom implementation of a simple UNIX shell as a requirement to complete the first sprint in the ALX - Holberton school 12-month SE program. Taking a minimalistic approach, the following functions have been implemented: access, execve, exit, fork, free, fstat, getline, malloc, perror, signal, stat, wait, write.
+**List of allowed functions and system calls**
 
-File Descriptions
-AUTHORS - It lists the contributors of this project man_1_simple_shell - The Manual describing usage of the simple_shell shell.h - The header file used in this project
+access (man 2 access)
+chdir (man 2 chdir)
+close (man 2 close)
+closedir (man 3 closedir)
+execve (man 2 execve)
+exit (man 3 exit)
+_exit (man 2 _exit)
+fflush (man 3 fflush)
+fork (man 2 fork)
+free (man 3 free)
+getcwd (man 3 getcwd)
+getline (man 3 getline)
+getpid (man 2 getpid)
+isatty (man 3 isatty)
+kill (man 2 kill)
+malloc (man 3 malloc)
+open (man 2 open)
+opendir (man 3 opendir)
+perror (man 3 perror)
+read (man 2 read)
+readdir (man 3 readdir)
+signal (man 2 signal)
+stat (__xstat) (man 2 stat)
+lstat (__lxstat) (man 2 lstat)
+fstat (__fxstat) (man 2 fstat)
+strtok (man 3 strtok)
+wait (man 2 wait)
+waitpid (man 2 waitpid)
+wait3 (man 2 wait3)
+wait4 (man 2 wait4)
+write (man 2 write)
+
+
+Compilation
+Your shell will be compiled this way:
+
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
