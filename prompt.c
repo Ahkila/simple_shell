@@ -10,7 +10,7 @@
 
 int main(void)
 {
-	char *envp[] = {NULL};
+	char *environ[] = {NULL};
 	char *args[] = {"/bin/ls", "-l", NULL};
 
 	if (execve(args[0], args, environ) == -1)
